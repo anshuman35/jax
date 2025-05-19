@@ -52,6 +52,7 @@ from jax._src.sharding import Sharding
 from jax._src.sharding_impls import (
     NamedSharding, SingleDeviceSharding, TransferToMemoryKind, GSPMDSharding,
     is_single_device_sharding)
+from jax._src.stages import SourceInfo
 import numpy as np
 
 
@@ -238,11 +239,6 @@ def jaxpr_has_prim_requiring_devices(jaxpr: core.Jaxpr) -> bool:
     if jaxpr_has_prim_requiring_devices(subjaxpr):
       return True
   return False
-
-
-class SourceInfo(NamedTuple):
-  source_info: source_info_util.SourceInfo
-  eqn_name: str
 
 
 @util.weakref_lru_cache
