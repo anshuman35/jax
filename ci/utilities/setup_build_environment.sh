@@ -37,6 +37,9 @@ function clone_main_xla() {
 # Clone XLA at HEAD if required.
 if [[ "$JAXCI_CLONE_MAIN_XLA" == 1 ]]; then
   # Clone only if $(pwd)/xla does not exist to avoid failure on re-runs.
+  
+  if [[ ! -d $(pwd)]]; then
+   clone_xla
   if [[ ! -d $(pwd)/xla ]]; then
     clone_main_xla
   else
